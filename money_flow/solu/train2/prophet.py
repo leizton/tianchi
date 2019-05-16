@@ -20,7 +20,7 @@ def plot(ser, start=0, show=True, nFig=1):
 
 def formatTime(time_src):
     time = list(time_src)
-    for i in xrange(len(time)):
+    for i in range(len(time)):
         time[i] = datetime.datetime.strptime(time[i], '%Y%m%d').strftime('%Y-%m-%d')
     return time
 
@@ -38,7 +38,7 @@ def prophet(time, ser):
 
 
 def iter(time, ser, iterNum=1):
-    for i in xrange(iterNum):
+    for i in range(iterNum):
         ser.append(prophet(time[i:len(time) - 1], ser[i:len(ser) - 1]))
         nextDate = datetime.datetime.strptime(time[-1], '%Y-%m-%d') + datetime.timedelta(days=1)
         time.append(nextDate.strftime('%Y-%m-%d'))
@@ -57,7 +57,7 @@ if __name__ == '__main__':
     redeem = list(redeem_src)
     redeem = iter(time, redeem, 31)
 
-    for i in xrange(srclen, len(purchase)):
+    for i in range(srclen, len(purchase)):
         print('201409%02d,%d,%d' % (i - srclen + 1, int(purchase[i]), int(redeem[i])))
 
     plot(purchase[0:srclen], show=False)
