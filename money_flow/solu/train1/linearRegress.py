@@ -24,7 +24,7 @@ def train(X, Y):
     error = (reg.predict(X) - Y).flatten().tolist()[0]
     print('error:', math.sqrt(sum([v ** 2 for v in error]) / len(error)))
     print('score:', reg.score(X, Y))
-    # plot(reg.predict(X), Y)
+    plot(reg.predict(X), Y)
     return reg
 
 
